@@ -39,3 +39,33 @@ class Booking(webdriver.Chrome):
             By.ID,"autocomplete-result-0"
         )
         first_result.click()
+    def selected_dates(self, check_in_date,check_out_date):
+        check_in_element=self.find_element(
+            By.CSS_SELECTOR,
+            f'span[data-date="{check_in_date}"]'
+        )
+        check_out_element=self.find_element(
+            By.CSS_SELECTOR,
+            f'span[data-date="{check_out_date}"]'
+        )
+        check_in_element.click()
+        #time.sleep(0.5)
+        check_out_element.click()
+
+    def select_adults(self,count):
+        selection_count=self.find_element(
+            By.CSS_SELECTOR,
+            f'button[data-testid="occupancy-config"]'
+        )
+        selection_count.click()
+        decrease_adult = self.find_element(
+            By.CSS_SELECTOR,
+            f'button[class="a83ed08757 c21c56c305 f38b6daa18 d691166b09 ab98298258 e91c91fa93"]'
+        )
+        decrease_adult.click()
+    def searchButton(self):
+        clickSubmit=self.find_element(
+            By.CSS_SELECTOR,
+            f'button[class= "a83ed08757 c21c56c305 a4c1805887 f671049264 a2abacf76b c082d89982 cceeb8986b b9fd3c6b3c"]'
+        )
+        clickSubmit.click()
