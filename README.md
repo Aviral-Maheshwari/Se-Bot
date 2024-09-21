@@ -42,6 +42,7 @@ To run this project, make sure you have the following installed:
    - Change the CityToGO
    - Change the CheckIn and CheckOut Time
    - Change the no. of adults and kids.
+   - Change the Rating Value to Filter Deals Based On Number Of Stars
 5. Run the bot:
    ```bash
    python run.py
