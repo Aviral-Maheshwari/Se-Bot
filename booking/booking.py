@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 import os
 from selenium import webdriver
 import time
-
+from booking.booking_filteration import BookingFilteration
 class Booking(webdriver.Chrome):
     def __init__(self,driver_path=r"C:\SeleniumDrivers",teardown=False):
         self.driver_path=driver_path
@@ -17,17 +17,17 @@ class Booking(webdriver.Chrome):
             self.quit()
     def land_first_page(self):
         self.get(const.BASE_URL)
-    # #def change_currency(self,currency=None):
-    #     currency_element=self.find_element(
-    #         By.CSS_SELECTOR,
-    #         'button[data-testid="header-currency-picker-trigger"]'
-    #     )
-    #     currency_element.click()
-        # selected_currency_element=self.find_element(
-        #     By.CLASS_NAME,
-        #     f'class[Picker_selection-text="{currency}"]'
-        # )
-        # selected_currency_element.click()
+    def change_currency(self,):
+        currency_element=self.find_element(
+            By.CSS_SELECTOR,
+            'button[data-testid="header-currency-picker-trigger"]'
+        )
+        currency_element.click()
+        time.sleep(1)
+        selected_currency_element = self.find_element(
+              By.XPATH,"//div[@class='dc5041d860 c72df67c95 fb60b9836d']//span[contains(@class, 'Picker_selection-text') and contains(., 'United States Dollar')]"
+        )
+        selected_currency_element.click()
 
     def select_place_to_go(self,place_to_go):
         search_field=self.find_element(
@@ -69,3 +69,7 @@ class Booking(webdriver.Chrome):
             f'button[class= "a83ed08757 c21c56c305 a4c1805887 f671049264 a2abacf76b c082d89982 cceeb8986b b9fd3c6b3c"]'
         )
         clickSubmit.click()
+
+    # def apply_filterations(self, rating):
+    #     filteration=BookingFilteration(driver=self)
+    #     filteration.apply_star_rating(rating)
