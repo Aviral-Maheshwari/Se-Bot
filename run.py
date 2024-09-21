@@ -8,6 +8,6 @@ with Booking(teardown=False) as bot:
                        check_out_date='2024-09-23')
     bot.select_adults(count=2)
     bot.searchButton()
-    #bot.apply_filterations(rating=2)
+    bot.apply_filterations(rating=3)
     print("Exiting...")
     input("Hello")

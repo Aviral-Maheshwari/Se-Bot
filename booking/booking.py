@@ -70,6 +70,11 @@ class Booking(webdriver.Chrome):
         )
         clickSubmit.click()
 
-    # def apply_filterations(self, rating):
-    #     filteration=BookingFilteration(driver=self)
-    #     filteration.apply_star_rating(rating)
+
+    def apply_filterations(self,rating):
+        star_rating = self.find_element(By.XPATH,
+        f"//div[contains(text(), '{rating} stars')]"
+        )
+        star_rating.click()
+
+
